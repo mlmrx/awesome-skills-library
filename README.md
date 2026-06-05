@@ -1,0 +1,172 @@
+# Awesome Skills Library
+
+Awesome Skills Library is an open-source package index for reusable AI agent skills.
+
+A skill is **a reusable AI agent capability package containing instructions, metadata, examples, tests, safety boundaries, and compatibility information.**
+
+> Prompts describe intent. Tools expose actions. Skills encode repeatable know-how into reusable agent capabilities.
+
+This repository is the public-launch foundation for a contributor-friendly skills registry. It is intentionally small: no website, no heavy framework, and no product surface beyond the repository, schema, templates, validation scripts, and one complete example skill.
+
+## Why skills matter for AI agents
+
+AI agents increasingly need repeatable procedures rather than one-off prompts. A well-designed skill helps an agent:
+
+- perform a bounded task consistently;
+- understand required inputs and expected outputs;
+- know what tools or permissions may be needed;
+- apply safety and quality constraints before acting;
+- expose compatibility information for different agent runtimes;
+- give maintainers a testable unit that can improve over time.
+
+Skills make operational knowledge portable. They let researchers, agent builders, and infrastructure teams share a capability without forcing every agent stack to rediscover the same workflow.
+
+## Not a prompt library
+
+Awesome Skills Library is not a prompt dump. Prompt snippets are usually informal text fragments. A skill package is structured infrastructure:
+
+- agent-facing instructions in `SKILL.md`;
+- machine-readable metadata in `skill.yaml`;
+- examples that show realistic inputs and outputs;
+- tests that define minimum expected behavior;
+- safety boundaries and failure modes;
+- compatibility and provenance information.
+
+The goal is not to collect clever wording. The goal is to make useful agent capabilities discoverable, reusable, reviewable, and maintainable.
+
+## What every skill package contains
+
+Every skill must include:
+
+```text
+SKILL.md
+skill.yaml
+tests/basic.yaml
+examples/input.md
+examples/output.md
+```
+
+`SKILL.md` must include these sections:
+
+- Purpose
+- When to use this skill
+- Required inputs
+- Step-by-step workflow
+- Output format
+- Quality bar
+- Safety boundaries
+- Failure modes
+
+`skill.yaml` must include these fields:
+
+- `id`
+- `name`
+- `version`
+- `category`
+- `description`
+- `use_cases`
+- `inputs`
+- `outputs`
+- `required_tools`
+- `permissions`
+- `safety_level`
+- `risk_tags`
+- `compatibility`
+- `provenance`
+- `license`
+- `maintainers`
+- `tests`
+
+See [`docs/schema.md`](docs/schema.md) and [`schema/skill.schema.json`](schema/skill.schema.json) for the current metadata contract.
+
+## Repository structure
+
+```text
+.github/                 GitHub Actions, issue templates, and PR template
+docs/                    Project vision, schema notes, safety, roadmap, and compatibility guidance
+schema/                  Machine-readable skill metadata schema
+templates/skill/         Starting point for new skills
+skills/                  Published skill packages, grouped by category
+registry/                Registry data generated or maintained from skill metadata
+scripts/                 Lightweight maintenance scripts
+tests/fixtures/          Test fixtures for future script and registry tests
+SKILLS_INDEX.md          Human-readable generated index of skills
+```
+
+## Add a new skill
+
+1. Create a skill from the template:
+
+   ```bash
+   python scripts/new_skill.py <category>/<skill-slug>
+   ```
+
+   Example:
+
+   ```bash
+   python scripts/new_skill.py security/prompt-injection-review
+   ```
+
+2. Edit the generated files:
+   - complete `SKILL.md` with a concrete workflow;
+   - complete `skill.yaml` with stable metadata;
+   - update `tests/basic.yaml` with expected behavior;
+   - add realistic `examples/input.md` and `examples/output.md`.
+
+3. Validate locally:
+
+   ```bash
+   python scripts/validate_skills.py
+   ```
+
+4. Regenerate the index:
+
+   ```bash
+   python scripts/generate_index.py
+   ```
+
+5. Open a pull request using the checklist in `.github/pull_request_template.md`.
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the full contributor workflow.
+
+## Validate skills locally
+
+This project uses only Python standard-library scripts for the initial repository foundation.
+
+```bash
+python scripts/validate_skills.py
+python scripts/generate_index.py
+```
+
+`validate_skills.py` scans `skills/`, checks required files, validates required metadata fields, detects duplicate skill IDs, prints a pass/fail report, and exits non-zero on failure.
+
+`generate_index.py` reads all `skill.yaml` files and writes [`SKILLS_INDEX.md`](SKILLS_INDEX.md), grouped by category.
+
+## Initial roadmap
+
+The first milestones are intentionally practical:
+
+1. Establish the public repository structure, schema, and contribution process.
+2. Add a small set of high-quality skills across agent infrastructure, safety, research, and developer workflows.
+3. Improve validation coverage while keeping dependencies minimal.
+4. Expand compatibility metadata for common agent runtimes and execution environments.
+5. Define registry publishing conventions once the skill set is large enough to justify automation.
+
+See [`docs/roadmap.md`](docs/roadmap.md) for more detail.
+
+## How contributors can help
+
+Useful contributions include:
+
+- proposing reusable skills with clear tests and safety boundaries;
+- improving existing skill workflows, examples, or metadata;
+- adding compatibility notes for agent runtimes;
+- identifying safety risks or ambiguous instructions;
+- improving validation scripts without adding unnecessary dependencies;
+- reviewing whether a proposed skill is reusable infrastructure rather than a one-off prompt.
+
+Please read [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md) before contributing.
+
+## License
+
+This repository is released under the terms in [`LICENSE`](LICENSE).

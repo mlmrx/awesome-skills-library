@@ -1,0 +1,10 @@
+id: basic
+description: Creates a structured profile and labels unsupported claims as unverified.
+input: ../examples/input.md
+expected_output: ../examples/output.md
+checks:
+  - Output includes Identity, Owner / Operator, Purpose, Capabilities, Input Contract, Output Contract, Trust Claims, Verification Metadata, Risk Notes, Human Review Recommendation, and Verification Gaps sections.
+  - Output uses unknown for missing owner/operator details.
+  - Output does not certify or endorse the target agent.
+  - Output marks unsupported security and reliability claims as unverified or self-asserted.
+  - Output recommends human review before relying on the profile for integration.

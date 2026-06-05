@@ -1,0 +1,29 @@
+name: Skill improvement
+description: Suggest an improvement to an existing skill.
+title: "[Improve skill]: "
+labels: ["skill-improvement"]
+body:
+  - type: input
+    id: skill-id
+    attributes:
+      label: Skill ID
+      description: Which skill should be improved?
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Proposed improvement
+      description: Describe the change and why it improves the skill.
+    validations:
+      required: true
+  - type: textarea
+    id: affected-files
+    attributes:
+      label: Affected files or sections
+      description: List known files or sections that should change.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation idea
+      description: How could this improvement be tested or reviewed?

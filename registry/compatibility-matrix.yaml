@@ -1,0 +1,9 @@
+compatibility:
+  generic-instruction-following-agent:
+    description: Agent can read Markdown instructions and follow structured workflows.
+    skills:
+      - agent-infra.agentfacts-profile
+  markdown-capable-agent:
+    description: Agent can produce structured Markdown outputs.
+    skills:
+      - agent-infra.agentfacts-profile

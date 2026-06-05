@@ -1,0 +1,36 @@
+id: category.skill-slug
+name: Skill Name
+version: 0.1.0
+category: category
+description: Short description of the reusable agent capability.
+use_cases:
+  - Describe a recurring task this skill supports.
+inputs:
+  - name: primary_input
+    description: Main information the agent needs.
+outputs:
+  - name: result
+    description: Expected output artifact.
+required_tools:
+  - none
+permissions:
+  - none
+safety_level: low
+risk_tags:
+  - review-required
+compatibility:
+  agent_runtimes:
+    - generic-instruction-following-agent
+  model_requirements:
+    - can follow structured instructions
+  known_limitations:
+    - Update this section for runtime-specific constraints.
+provenance:
+  source: Awesome Skills Library template
+  created_by: contributor
+  reviewed: false
+license: CC0-1.0
+maintainers:
+  - unassigned
+tests:
+  - tests/basic.yaml
