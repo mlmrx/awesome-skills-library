@@ -1,0 +1,31 @@
+name: Compatibility request
+description: Request or clarify compatibility for an agent runtime, tool, or environment.
+title: "[Compatibility]: "
+labels: ["compatibility"]
+body:
+  - type: input
+    id: skill-id
+    attributes:
+      label: Skill ID
+      description: Which skill is this request about?
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime, tool, or environment
+      description: Name the agent runtime, model environment, or toolchain.
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: Request
+      description: What compatibility should be added, changed, or clarified?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or test results
+      description: Include links, logs, or notes that support the compatibility claim.

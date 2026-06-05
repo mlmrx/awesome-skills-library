@@ -1,0 +1,38 @@
+name: Security concern
+description: Report an unsafe skill behavior, metadata issue, or repository security concern.
+title: "[Security]: "
+labels: ["security"]
+body:
+  - type: textarea
+    id: concern
+    attributes:
+      label: Concern summary
+      description: Describe the security or safety concern. Avoid sensitive exploit details if public disclosure is unsafe.
+    validations:
+      required: true
+  - type: input
+    id: affected
+    attributes:
+      label: Affected skill or file
+      description: Provide the skill ID or file path if known.
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - low
+        - medium
+        - high
+        - critical
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction or example
+      description: Provide safe reproduction details or a sanitized example.
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Suggested mitigation
+      description: How should the project address this concern?
