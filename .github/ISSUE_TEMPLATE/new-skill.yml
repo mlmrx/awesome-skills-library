@@ -1,0 +1,75 @@
+name: New skill proposal
+description: Propose a reusable AI agent skill for the library.
+title: "[New skill]: "
+labels: ["new-skill"]
+body:
+  - type: input
+    id: skill-name
+    attributes:
+      label: Skill name
+      description: What should the skill be called?
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: Proposed category, such as security, agent-infra, research, or developer-tools.
+    validations:
+      required: true
+  - type: textarea
+    id: problem-solved
+    attributes:
+      label: Problem solved
+      description: What repeatable problem does this skill solve?
+    validations:
+      required: true
+  - type: textarea
+    id: who-uses-it
+    attributes:
+      label: Who uses it
+      description: Who would use this skill and in what context?
+    validations:
+      required: true
+  - type: textarea
+    id: required-inputs
+    attributes:
+      label: Required inputs
+      description: What inputs must the agent receive?
+    validations:
+      required: true
+  - type: textarea
+    id: expected-outputs
+    attributes:
+      label: Expected outputs
+      description: What should the skill produce?
+    validations:
+      required: true
+  - type: textarea
+    id: tools-required
+    attributes:
+      label: Tools required
+      description: What tools or permissions does the skill need?
+    validations:
+      required: true
+  - type: textarea
+    id: safety-risks
+    attributes:
+      label: Safety risks
+      description: What could go wrong if the skill is misused or over-trusted?
+    validations:
+      required: true
+  - type: textarea
+    id: example-task
+    attributes:
+      label: Example task
+      description: Provide a concrete task this skill should support.
+    validations:
+      required: true
+  - type: textarea
+    id: reusable
+    attributes:
+      label: Why this should be reusable
+      description: Explain why this is infrastructure rather than a one-off prompt.
+    validations:
+      required: true

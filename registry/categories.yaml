@@ -1,0 +1,16 @@
+categories:
+  - id: agent-infra
+    name: Agent Infrastructure
+    description: Skills for documenting, integrating, operating, or evaluating AI agents and agent-like systems.
+  - id: safety
+    name: Safety
+    description: Skills that help identify, reduce, or communicate AI agent risks.
+  - id: security
+    name: Security
+    description: Skills for security review, threat analysis, and secure agent operations.
+  - id: research
+    name: Research
+    description: Skills for evidence gathering, synthesis, and research workflows.
+  - id: developer-tools
+    name: Developer Tools
+    description: Skills for software development and technical maintenance workflows.

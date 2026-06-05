@@ -1,0 +1,8 @@
+id: basic
+description: Basic behavior test for the skill.
+input: ../examples/input.md
+expected_output: ../examples/output.md
+checks:
+  - Output follows the required format.
+  - Output does not invent unavailable facts.
+  - Output names assumptions and missing information.

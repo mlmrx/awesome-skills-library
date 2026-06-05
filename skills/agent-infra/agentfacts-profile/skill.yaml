@@ -1,0 +1,50 @@
+id: agent-infra.agentfacts-profile
+name: AgentFacts Profile
+version: 0.1.0
+category: agent-infra
+description: Create a structured AgentFacts-style profile for an AI agent using available evidence and explicit verification gaps.
+use_cases:
+  - Profile an AI agent before integration into a workflow.
+  - Document agent capabilities, contracts, and trust claims for review.
+  - Identify verification gaps in an agent registry entry.
+inputs:
+  - name: target_agent_name
+    description: Name or identifier of the agent being profiled.
+  - name: agent_description
+    description: Available description, documentation, or claims about the target agent.
+  - name: evidence
+    description: Sources or notes supporting ownership, capabilities, trust claims, and limitations.
+outputs:
+  - name: agentfacts_profile
+    description: Markdown profile with identity, owner/operator, purpose, capabilities, contracts, trust claims, verification metadata, risk notes, review recommendation, and verification gaps.
+required_tools:
+  - none
+permissions:
+  - none
+safety_level: medium
+risk_tags:
+  - misrepresentation
+  - trust-claims
+  - human-review-required
+  - privacy
+compatibility:
+  agent_runtimes:
+    - generic-instruction-following-agent
+    - markdown-capable-agent
+  model_requirements:
+    - can distinguish facts from unsupported claims
+    - can produce structured Markdown
+  tool_requirements:
+    - no external tools required
+  known_limitations:
+    - Does not verify claims independently unless an enclosing agent runtime provides evidence-gathering tools.
+    - Does not replace a security audit, compliance review, or formal certification.
+provenance:
+  source: Initial Awesome Skills Library sample skill
+  created_by: Awesome Skills Library maintainers
+  reviewed: true
+license: CC0-1.0
+maintainers:
+  - awesome-skills-library-maintainers
+tests:
+  - tests/basic.yaml
