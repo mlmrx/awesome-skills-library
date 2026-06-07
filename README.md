@@ -250,13 +250,42 @@ export GITHUB_TOKEN=your_token_here
 
 python scripts/import_anthropic_skills.py
 python scripts/discover_github_skills.py --max-results 500
+python scripts/copy_licensed_skills.py
 python scripts/normalize_discovered_skills.py
 python scripts/generate_import_report.py
+python scripts/validate_attribution.py
 ```
 
 `GITHUB_TOKEN` is optional, but authenticated GitHub API requests have higher rate limits. The discovery script does not clone repositories or download whole projects; it fetches repository metadata and candidate `SKILL.md` files only when needed for metadata extraction and risk tagging.
 
 Anthropic's official skills repository is indexed separately because it contains mixed licensing. Source-available document skills such as `docx`, `pdf`, `pptx`, and `xlsx` are cataloged with attribution and license notes, but must not be copied into `skills/` unless redistribution permission is explicitly confirmed. Unknown-license community skills are also index-only until manual review. See [`sources/README.md`](sources/README.md) for the attribution and manual-review rules.
+
+## Importing third-party skills
+
+Awesome Skills Library can catalog public AI agent skills from GitHub and Anthropic's official skills repository while preserving authorship and license integrity. Third-party imports follow these rules:
+
+- Skills are copied only when the source license allows redistribution.
+- Unknown-license skills are cataloged only and are not copied into the distributable library.
+- Source-available skills are cataloged only unless their terms explicitly allow redistribution.
+- Every copied third-party skill gets attribution metadata in `ATTRIBUTION.md` and `source.yaml`.
+- Imported third-party skills live under `third_party/skills/`.
+- Original curated Awesome Skills Library skills live under `skills/`.
+- Imported scripts are never executed by the import pipeline.
+
+Run the licensed import pipeline locally:
+
+```bash
+export GITHUB_TOKEN=your_token_here
+
+python scripts/import_anthropic_skills.py
+python scripts/discover_github_skills.py --max-results 500
+python scripts/copy_licensed_skills.py
+python scripts/normalize_discovered_skills.py
+python scripts/generate_import_report.py
+python scripts/validate_attribution.py
+```
+
+The generated catalog files are written to `catalog/`, including `discovered-skills.json`, `discovered-skills.jsonl`, `attribution.json`, and `import-report.md`.
 
 ## License
 

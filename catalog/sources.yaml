@@ -35,3 +35,12 @@ sources:
     license_status: unknown
     notes: Awesome list for Claude skills; links may point to third-party repositories with separate licenses.
     enabled: true
+  - name: tfriedel/claude-office-skills
+    type: community
+    repo_owner: tfriedel
+    repo_name: claude-office-skills
+    repo_url: https://github.com/tfriedel/claude-office-skills
+    default_branch: main
+    enabled: true
+    license_status: unknown
+    notes: Community office/document skills; verify repository license and per-skill attribution before import.

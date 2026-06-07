@@ -21,5 +21,11 @@ jobs:
       - name: Validate skills
         run: python scripts/validate_skills.py
 
+      - name: Validate third-party attribution
+        run: python scripts/validate_attribution.py
+
       - name: Generate skills index
         run: python scripts/generate_index.py
+
+      - name: Generate import report
+        run: python scripts/generate_import_report.py
