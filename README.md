@@ -202,7 +202,7 @@ python scripts/validate_skills.py
 python scripts/generate_index.py
 ```
 
-`validate_skills.py` scans `skills/`, checks required files, validates required metadata fields, detects duplicate skill IDs, prints a pass/fail report, and exits non-zero on failure.
+`validate_skills.py` scans `skills/`, checks required files, validates schema v1 metadata fields and enum values, verifies listed test files, detects duplicate skill IDs, prints a grouped pass/fail report, and exits non-zero on failure.
 
 `generate_index.py` reads all `skill.yaml` files and writes [`SKILLS_INDEX.md`](SKILLS_INDEX.md), grouped by category.
 

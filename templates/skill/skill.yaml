@@ -14,23 +14,27 @@ outputs:
 required_tools:
   - none
 permissions:
-  - none
+  network: false
+  filesystem: false
+  code_execution: false
+  external_api: false
+  user_data_access: false
 safety_level: low
 risk_tags:
   - review-required
 compatibility:
-  agent_runtimes:
-    - generic-instruction-following-agent
-  model_requirements:
-    - can follow structured instructions
-  known_limitations:
-    - Update this section for runtime-specific constraints.
+  generic_agents: supported
+  claude_skills: unknown
+  chatgpt_skills: unknown
+  mcp: unknown
+  nanda_agentfacts: unknown
 provenance:
+  author: contributor
   source: Awesome Skills Library template
-  created_by: contributor
-  reviewed: false
+  references: []
 license: CC0-1.0
 maintainers:
-  - unassigned
+  - name: unassigned
+    contact: unassigned
 tests:
   - tests/basic.yaml
