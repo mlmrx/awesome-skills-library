@@ -2,25 +2,29 @@ id: agent-infra.agentfacts-profile
 name: AgentFacts Profile
 version: 0.1.0
 category: agent-infra
-description: Create a structured AgentFacts-style profile for an AI agent using available evidence and explicit verification gaps.
+description: Create an evidence-grounded AgentFacts-style profile for an AI agent, including capabilities, contracts, trust claims, verification status, risks, and explicit review gaps.
 use_cases:
-  - Profile an AI agent before integration into a workflow.
-  - Document agent capabilities, contracts, and trust claims for review.
-  - Identify verification gaps in an agent registry entry.
+  - Profile an AI agent before integration into a workflow or registry.
+  - Convert scattered agent documentation into a structured, reviewable capability package summary.
+  - Identify unsupported claims, missing ownership details, and verification gaps before relying on an agent.
 inputs:
   - name: target_agent_name
-    description: Name or identifier of the agent being profiled.
+    description: Name or stable identifier of the agent being profiled.
   - name: agent_description
-    description: Available description, documentation, or claims about the target agent.
+    description: Available documentation, marketing copy, README content, manifest data, or other claims about the target agent.
   - name: evidence
-    description: Sources or notes supporting ownership, capabilities, trust claims, and limitations.
+    description: Sources, links, notes, or reviewer observations supporting ownership, capabilities, trust claims, limitations, and operational context.
 outputs:
   - name: agentfacts_profile
-    description: Markdown profile with identity, owner/operator, purpose, capabilities, contracts, trust claims, verification metadata, risk notes, review recommendation, and verification gaps.
+    description: Structured Markdown profile covering identity, owner/operator, purpose, capabilities, input and output contracts, trust claims, verification metadata, risk notes, human review recommendation, and verification gaps.
 required_tools:
   - none
 permissions:
-  - none
+  network: false
+  filesystem: false
+  code_execution: false
+  external_api: false
+  user_data_access: false
 safety_level: medium
 risk_tags:
   - misrepresentation
@@ -28,23 +32,20 @@ risk_tags:
   - human-review-required
   - privacy
 compatibility:
-  agent_runtimes:
-    - generic-instruction-following-agent
-    - markdown-capable-agent
-  model_requirements:
-    - can distinguish facts from unsupported claims
-    - can produce structured Markdown
-  tool_requirements:
-    - no external tools required
-  known_limitations:
-    - Does not verify claims independently unless an enclosing agent runtime provides evidence-gathering tools.
-    - Does not replace a security audit, compliance review, or formal certification.
+  generic_agents: supported
+  claude_skills: experimental
+  chatgpt_skills: experimental
+  mcp: not_supported
+  nanda_agentfacts: experimental
 provenance:
-  source: Initial Awesome Skills Library sample skill
-  created_by: Awesome Skills Library maintainers
-  reviewed: true
+  author: Awesome Skills Library maintainers
+  source: Initial Awesome Skills Library sample skill for registry-oriented agent profile drafting.
+  references:
+    - docs/compatibility.md
+    - docs/safety-and-risk.md
 license: CC0-1.0
 maintainers:
-  - awesome-skills-library-maintainers
+  - name: Awesome Skills Library maintainers
+    contact: https://github.com/awesome-skills-library/awesome-skills-library/issues
 tests:
   - tests/basic.yaml

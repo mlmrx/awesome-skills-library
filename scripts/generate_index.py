@@ -6,64 +6,49 @@ from __future__ import annotations
 import sys
 from collections import defaultdict
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = ROOT / "skills"
 INDEX_PATH = ROOT / "SKILLS_INDEX.md"
 
 
-def parse_top_level_yaml(path: Path) -> dict[str, str]:
-    data: dict[str, str] = {}
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        if not raw_line.strip() or raw_line.lstrip().startswith("#"):
-            continue
-        if raw_line.startswith((" ", "\t", "-")):
-            continue
-        if ":" not in raw_line:
-            continue
-        key, value = raw_line.split(":", 1)
-        data[key.strip()] = value.strip()
-    return data
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from validate_skills import COMPATIBILITY_FIELDS, load_yaml  # noqa: E402
 
 
-def simple_list_value(path: Path, key: str) -> str:
-    lines = path.read_text(encoding="utf-8").splitlines()
-    key_indent: int | None = None
-    values: list[str] = []
-    for line in lines:
-        stripped = line.strip()
-        if not stripped:
-            continue
-        indent = len(line) - len(line.lstrip())
-        if key_indent is None:
-            if stripped.startswith(f"{key}:"):
-                key_indent = indent
-            continue
-        if indent <= key_indent and not stripped.startswith("-"):
-            break
-        if stripped.startswith("-"):
-            values.append(stripped[1:].strip())
-    return ", ".join(values) if values else "unknown"
+def scalar_string(value: Any, default: str = "") -> str:
+    return value if isinstance(value, str) else default
 
 
-def compatibility_summary(path: Path) -> str:
-    runtimes = simple_list_value(path, "agent_runtimes")
-    return runtimes if runtimes != "unknown" else "see skill.yaml"
+def compatibility_summary(metadata: dict[str, Any]) -> str:
+    compatibility = metadata.get("compatibility")
+    if not isinstance(compatibility, dict):
+        return "unknown"
+    supported = [
+        f"{target}: {compatibility[target]}"
+        for target in COMPATIBILITY_FIELDS
+        if isinstance(compatibility.get(target), str) and compatibility[target] != "unknown"
+    ]
+    return ", ".join(supported) if supported else "unknown"
 
 
 def collect_skills() -> dict[str, list[dict[str, str]]]:
     grouped: dict[str, list[dict[str, str]]] = defaultdict(list)
     for metadata_path in sorted(SKILLS_DIR.rglob("skill.yaml")):
-        metadata = parse_top_level_yaml(metadata_path)
+        metadata = load_yaml(metadata_path)
         skill_dir = metadata_path.parent
-        category = metadata.get("category", "uncategorized")
+        category = scalar_string(metadata.get("category"), "uncategorized")
         grouped[category].append(
             {
-                "name": metadata.get("name", "Unnamed skill"),
-                "id": metadata.get("id", "unknown"),
-                "description": metadata.get("description", ""),
-                "safety_level": metadata.get("safety_level", "unknown"),
-                "compatibility": compatibility_summary(metadata_path),
+                "name": scalar_string(metadata.get("name"), "Unnamed skill"),
+                "id": scalar_string(metadata.get("id"), "unknown"),
+                "description": scalar_string(metadata.get("description")),
+                "safety_level": scalar_string(metadata.get("safety_level"), "unknown"),
+                "compatibility": compatibility_summary(metadata),
                 "link": skill_dir.relative_to(ROOT).as_posix(),
             }
         )

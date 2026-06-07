@@ -33,11 +33,10 @@ minimal and reference them from `SKILL.md`.
 
 ## Validation checklist
 
-Run this command from the repository root to confirm the repository can find
-skill entry points:
+Run this command from the repository root to validate skill package files, schema v1 metadata, compatibility and safety enums, duplicate IDs, and listed test paths:
 
 ```bash
-find . -name SKILL.md -print
+python scripts/validate_skills.py
 ```
 
 Then check your changed files:
