@@ -76,7 +76,9 @@ def normalize(record: dict[str, Any], now: str) -> dict[str, Any]:
         ),
         "source_license": license_name,
         "source_license_spdx": license_spdx,
+        "source_commit": record.get("source_commit") or record.get("commit_sha"),
         "redistribution_status": status,
+        "copied_to": record.get("copied_to"),
         "original_author": record.get("original_author") or ("Anthropic" if source_repo == "anthropics/skills" else owner),
         "repo_owner": owner,
         "repo_stars": record.get("stars") or record.get("repo_stars") or 0,
@@ -89,6 +91,7 @@ def normalize(record: dict[str, Any], now: str) -> dict[str, Any]:
         "risk_tags": sorted(set(record.get("risk_tags") or [])),
         "trust_notes": record.get("trust_notes") or record.get("license_notes") or "Requires manual review before any content import.",
         "discovered_at": record.get("discovered_at") or now,
+        "imported_at": record.get("imported_at"),
         "last_seen_at": now,
     }
 
@@ -111,6 +114,10 @@ def main() -> int:
             "original_author": record["original_author"],
             "source_repo": record["source_repo"],
             "source_url": record["source_file_url"] or record["source_url"],
+            "source_file_path": record.get("source_file_path"),
+            "source_commit": record.get("source_commit"),
+            "copied_to": record.get("copied_to"),
+            "imported_at": record.get("imported_at"),
             "license_name": record["source_license"],
             "license_spdx_id": record["source_license_spdx"],
             "redistribution_status": record["redistribution_status"],

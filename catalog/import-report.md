@@ -1,12 +1,17 @@
 # Skill acquisition import report
 
-Generated at: `2026-06-07T00:57:16Z`
+Generated at: `2026-06-07T03:48:24Z`
 
 ## Summary
 
-- Total sources scanned/configured: **4**
+- Sources scanned/configured: **5**
 - Total candidate skills found: **17**
-- Total Anthropic official skills found: **17**
+- Total skills copied: **0**
+- Total index-only skills: **17**
+- Total manual-review skills: **0**
+- Total unknown-license skills: **17**
+- Anthropic official skills copied: **0**
+- Anthropic source-available document skills indexed only: **4**
 
 ## Top repositories by number of skills
 
@@ -24,8 +29,7 @@ Generated at: `2026-06-07T00:57:16Z`
 
 | Status | Skills |
 | --- | ---: |
-| unknown | 13 |
-| index_only | 4 |
+| index_only | 17 |
 
 ## Category breakdown
 
@@ -36,50 +40,52 @@ Generated at: `2026-06-07T00:57:16Z`
 | documents | 4 |
 | design | 2 |
 
-## Skills requiring manual review
+## Risk tag breakdown
 
-| Skill | Source | Reason |
-| --- | --- | --- |
-| algorithmic-art | https://github.com/anthropics/skills/blob/main/skills/algorithmic-art/SKILL.md | redistribution=unknown; risk_tags=browser_automation, network_access |
-| brand-guidelines | https://github.com/anthropics/skills/blob/main/skills/brand-guidelines/SKILL.md | redistribution=unknown |
-| canvas-design | https://github.com/anthropics/skills/blob/main/skills/canvas-design/SKILL.md | redistribution=unknown; risk_tags=network_access |
-| claude-api | https://github.com/anthropics/skills/blob/main/skills/claude-api/SKILL.md | redistribution=unknown; risk_tags=credentials, network_access, shell_commands |
-| doc-coauthoring | https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md | redistribution=unknown; risk_tags=network_access |
-| docx | https://github.com/anthropics/skills/blob/main/skills/docx/SKILL.md | redistribution=index_only; risk_tags=destructive_actions, network_access, shell_commands |
-| frontend-design | https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md | redistribution=unknown |
-| internal-comms | https://github.com/anthropics/skills/blob/main/skills/internal-comms/SKILL.md | redistribution=unknown |
-| mcp-builder | https://github.com/anthropics/skills/blob/main/skills/mcp-builder/SKILL.md | redistribution=unknown; risk_tags=code_execution, network_access |
-| pdf | https://github.com/anthropics/skills/blob/main/skills/pdf/SKILL.md | redistribution=index_only; risk_tags=credentials, shell_commands |
-| pptx | https://github.com/anthropics/skills/blob/main/skills/pptx/SKILL.md | redistribution=index_only; risk_tags=email, shell_commands |
-| skill-creator | https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md | redistribution=unknown; risk_tags=browser_automation, credentials, filesystem_writes, network_access, security_bypass, shell_commands |
-| slack-gif-creator | https://github.com/anthropics/skills/blob/main/skills/slack-gif-creator/SKILL.md | redistribution=unknown; risk_tags=network_access, shell_commands |
-| theme-factory | https://github.com/anthropics/skills/blob/main/skills/theme-factory/SKILL.md | redistribution=unknown |
-| web-artifacts-builder | https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder/SKILL.md | redistribution=unknown; risk_tags=browser_automation, network_access, shell_commands |
-| webapp-testing | https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md | redistribution=unknown; risk_tags=browser_automation, network_access, shell_commands |
-| xlsx | https://github.com/anthropics/skills/blob/main/skills/xlsx/SKILL.md | redistribution=index_only; risk_tags=database_access, destructive_actions, network_access, shell_commands |
+| Risk tag | Skills |
+| --- | ---: |
+| network_access | 11 |
+| shell_commands | 9 |
+| browser_automation | 4 |
+| credentials | 3 |
+| authentication | 3 |
+| code_execution | 2 |
+| filesystem_writes | 2 |
+| destructive_actions | 2 |
+| email | 1 |
+| security_bypass | 1 |
+| database_access | 1 |
 
-## Duplicate or near-duplicate skill names
+## Duplicate skill names
 
 _None detected._
 
-## High-risk candidates
+## Copied destination paths
 
-| Skill | Source | Risk tags |
+_No skills copied yet._
+
+## Manual review queue
+
+| Skill | Source | Reason |
 | --- | --- | --- |
-| claude-api | https://github.com/anthropics/skills/blob/main/skills/claude-api/SKILL.md | credentials, network_access, shell_commands |
-| docx | https://github.com/anthropics/skills/blob/main/skills/docx/SKILL.md | destructive_actions, network_access, shell_commands |
-| mcp-builder | https://github.com/anthropics/skills/blob/main/skills/mcp-builder/SKILL.md | code_execution, network_access |
-| pdf | https://github.com/anthropics/skills/blob/main/skills/pdf/SKILL.md | credentials, shell_commands |
-| skill-creator | https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md | browser_automation, credentials, filesystem_writes, network_access, security_bypass, shell_commands |
-| xlsx | https://github.com/anthropics/skills/blob/main/skills/xlsx/SKILL.md | database_access, destructive_actions, network_access, shell_commands |
-
-## Next recommended sources to scan
-
-- GitHub repositories tagged `claude-skills`, `agent-skills`, `claude-code-skills`, and `codex-skills`.
-- Awesome lists that link to individual skill repositories, with per-link license review.
-- Official runtime-specific skill registries or marketplaces once their redistribution policies are documented.
-- Research repositories that publish agent workflows with explicit open-source licenses.
+| algorithmic-art | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/algorithmic-art/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| brand-guidelines | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/brand-guidelines/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| canvas-design | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/canvas-design/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| claude-api | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/claude-api/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| doc-coauthoring | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/doc-coauthoring/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| docx | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/docx/SKILL.md | source-available, not open source |
+| frontend-design | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/frontend-design/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| internal-comms | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/internal-comms/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| mcp-builder | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/mcp-builder/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| pdf | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/pdf/SKILL.md | source-available, not open source |
+| pptx | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/pptx/SKILL.md | source-available, not open source |
+| skill-creator | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/skill-creator/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| slack-gif-creator | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/slack-gif-creator/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| theme-factory | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/theme-factory/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| web-artifacts-builder | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/web-artifacts-builder/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| webapp-testing | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/webapp-testing/SKILL.md | Official Anthropic skill; copied only when repository/per-skill license metadata indicates redistribution is allowed. |
+| xlsx | https://github.com/anthropics/skills/blob/da20c92503b2e8ff1cf28ca81a0df4673debdbf7/skills/xlsx/SKILL.md | source-available, not open source |
 
 ## Notes
 
-This report is generated from metadata only. Unknown-license and source-available candidates remain index-only until manual review confirms redistribution permissions.
+Discovery and import scripts never execute imported skill scripts or install imported dependencies. Unknown-license, proprietary, unclear, and source-available candidates remain catalog-only until manual review confirms redistribution permission.
