@@ -1,0 +1,37 @@
+sources:
+  - name: anthropics/skills
+    type: official
+    repo_owner: anthropics
+    repo_name: skills
+    repo_url: https://github.com/anthropics/skills
+    default_branch: main
+    license_status: mixed
+    notes: Official Anthropic skills repository. Mixed licensing; source-available document skills must be indexed only unless redistribution terms clearly allow copying.
+    enabled: true
+  - name: alirezarezvani/claude-skills
+    type: community
+    repo_owner: alirezarezvani
+    repo_name: claude-skills
+    repo_url: https://github.com/alirezarezvani/claude-skills
+    default_branch: main
+    license_status: unknown
+    notes: Community Claude skills repository; verify repository license and per-skill attribution before import.
+    enabled: true
+  - name: ComposioHQ/awesome-claude-skills
+    type: awesome-list
+    repo_owner: ComposioHQ
+    repo_name: awesome-claude-skills
+    repo_url: https://github.com/ComposioHQ/awesome-claude-skills
+    default_branch: main
+    license_status: unknown
+    notes: Awesome list for Claude skills; links may point to third-party repositories with separate licenses.
+    enabled: true
+  - name: travisvn/awesome-claude-skills
+    type: awesome-list
+    repo_owner: travisvn
+    repo_name: awesome-claude-skills
+    repo_url: https://github.com/travisvn/awesome-claude-skills
+    default_branch: main
+    license_status: unknown
+    notes: Awesome list for Claude skills; links may point to third-party repositories with separate licenses.
+    enabled: true

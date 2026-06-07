@@ -231,6 +231,33 @@ Useful contributions include:
 
 Please read [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md) before contributing.
 
+## Cataloging existing skills
+
+Awesome Skills Library uses an attribution-first discovery pipeline for public AI agent skills. The catalog scripts index metadata, source URLs, repository details, license information, and risk notes before any third-party content is considered for import. This protects original creators, preserves license context, and prevents accidental redistribution of source-available or unknown-license materials.
+
+Discovery and import outputs are written under `catalog/`:
+
+- `catalog/sources.yaml` lists configured starting sources.
+- `catalog/discovered-skills.jsonl` stores append-friendly discovery records.
+- `catalog/discovered-skills.json` stores normalized searchable catalog records.
+- `catalog/attribution.json` preserves source, author, license, and redistribution status.
+- `catalog/import-report.md` summarizes review queues, risk flags, licenses, and duplicates.
+
+Run the pipeline with:
+
+```bash
+export GITHUB_TOKEN=your_token_here
+
+python scripts/import_anthropic_skills.py
+python scripts/discover_github_skills.py --max-results 500
+python scripts/normalize_discovered_skills.py
+python scripts/generate_import_report.py
+```
+
+`GITHUB_TOKEN` is optional, but authenticated GitHub API requests have higher rate limits. The discovery script does not clone repositories or download whole projects; it fetches repository metadata and candidate `SKILL.md` files only when needed for metadata extraction and risk tagging.
+
+Anthropic's official skills repository is indexed separately because it contains mixed licensing. Source-available document skills such as `docx`, `pdf`, `pptx`, and `xlsx` are cataloged with attribution and license notes, but must not be copied into `skills/` unless redistribution permission is explicitly confirmed. Unknown-license community skills are also index-only until manual review. See [`sources/README.md`](sources/README.md) for the attribution and manual-review rules.
+
 ## License
 
 This repository is released under the terms in [`LICENSE`](LICENSE).
